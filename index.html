@@ -13,7 +13,7 @@
         <div class="auth-left">
             <div class="auth-left-content">
                 <h1>Welcome Back</h1>
-                <p>Manage your business with ease and confidence. Sign in to your ProBiz account to continue.</p>
+                <p>Manage your business with ease and confidence. Sign in to your ProBiz account to continue.</p> <br>
                 <div class="auth-benefits">
                     <div class="benefit">
                         <i class="fas fa-check-circle"></i>
@@ -73,10 +73,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password (6-8 characters)</label>
+                        <label for="password">Password (Minimum 6 characters)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-lock"></i>
-                            <input type="password" id="password" placeholder="Enter your password (min 6 characters)" required minlength="6" maxlength="8">
+                            <input type="password" id="password" placeholder="Enter your password (min 6 characters)" required minlength="6">
                             <button type="button" class="toggle-password" id="togglePassword">
                                 <i class="fas fa-eye"></i>
                             </button>
@@ -93,7 +93,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block">
-                        <span>Sign In</span>
+                        <span>Login</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
@@ -182,12 +182,6 @@
             
             if (passwordLength < 6) {
                 passwordError.textContent = `Password must be at least 6 characters (${passwordLength}/6)`;
-                passwordError.style.color = '#ff4757';
-                return false;
-            }
-            
-            if (passwordLength > 8) {
-                passwordError.textContent = 'Password cannot exceed 8 characters';
                 passwordError.style.color = '#ff4757';
                 return false;
             }

@@ -891,7 +891,7 @@ body {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    max-width: 1000px;
+    max-width: 750px;
     width: 100%;
     animation: fadeInUp 0.6s ease;
 }
@@ -899,7 +899,7 @@ body {
 .auth-left {
     background: linear-gradient(135deg, var(--primary-color), #5c4ab8);
     color: white;
-    padding: 60px;
+    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -938,15 +938,15 @@ body {
 }
 
 .auth-left h1 {
-    font-size: 36px;
-    margin-bottom: 12px;
+    font-size: 28px;
+    margin-bottom: 10px;
     font-weight: 800;
 }
 
 .auth-left > p {
-    font-size: 16px;
+    font-size: 14px;
     opacity: 0.9;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .auth-benefits {
@@ -956,9 +956,9 @@ body {
 .benefit {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    font-size: 14px;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 13px;
 }
 
 .benefit i {
@@ -1007,7 +1007,7 @@ body {
 }
 
 .auth-right {
-    padding: 60px;
+    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1020,7 +1020,7 @@ body {
 
 .auth-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     animation: slideDown 0.5s ease;
 }
 
@@ -1032,7 +1032,7 @@ body {
 }
 
 .auth-header h2 {
-    font-size: 24px;
+    font-size: 20px;
     color: var(--text-dark);
 }
 
@@ -1041,18 +1041,18 @@ body {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 10px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     font-weight: 600;
     color: var(--text-dark);
     font-size: 14px;
@@ -1074,7 +1074,7 @@ body {
 .input-wrapper input,
 .input-wrapper select {
     width: 100%;
-    padding: 12px 15px 12px 40px;
+    padding: 10px 15px 10px 40px;
     border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 14px;
@@ -1107,15 +1107,45 @@ body {
 
 .select-wrapper {
     position: relative;
+    display: block;
 }
 
-.select-wrapper::after {
-    content: '';
+.select-wrapper select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: var(--transition);
+    background: white;
+    color: var(--text-dark);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 35px;
+}
+
+.select-wrapper select:hover {
+    border-color: var(--primary-color);
+    background: var(--light-bg);
+}
+
+.select-wrapper select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+.select-wrapper i {
     position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+    color: var(--primary-color);
+    font-size: 12px;
 }
 
 .password-strength {
@@ -1123,7 +1153,7 @@ body {
     background: var(--border-color);
     border-radius: 2px;
     overflow: hidden;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 .strength-bar {
@@ -1137,7 +1167,7 @@ body {
 .error-message {
     display: block;
     font-size: 12px;
-    margin-top: 6px;
+    margin-top: 4px;
     min-height: 16px;
     animation: fadeInUp 0.3s ease;
     font-weight: 500;
@@ -1797,7 +1827,7 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
-    gap: 8px;
+    gap: 6px;
     user-select: none;
 }
 
@@ -1822,7 +1852,7 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 30px 0;
+    margin: 20px 0;
     color: var(--text-light);
     font-size: 14px;
 }
@@ -1838,12 +1868,12 @@ body {
 .social-login {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 .social-btn {
-    padding: 12px;
+    padding: 10px;
     border: 2px solid var(--border-color);
     background: var(--light-bg);
     border-radius: 8px;
@@ -1855,7 +1885,7 @@ body {
     gap: 8px;
     font-size: 14px;
     font-weight: 600;
-}
+}}
 
 .social-btn:hover {
     border-color: var(--primary-color);

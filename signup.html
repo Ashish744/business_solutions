@@ -13,7 +13,7 @@
         <div class="auth-left">
             <div class="auth-left-content">
                 <h1>Join ProBiz Today</h1>
-                <p>Start your journey to business excellence. Sign up and get instant access to our powerful platform.</p>
+                <p>Start your journey to business excellence. Sign up and get instant access to our powerful platform.</p> <br>
                 <div class="auth-benefits">
                     <div class="benefit">
                         <i class="fas fa-check-circle"></i>
@@ -87,10 +87,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="signupPassword">Password (6-8 characters)</label>
+                        <label for="signupPassword">Password (Minimum 6 characters)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-lock"></i>
-                            <input type="password" id="signupPassword" placeholder="Create a strong password (6-8 chars)" required minlength="6" maxlength="8">
+                            <input type="password" id="signupPassword" placeholder="Create a strong password" required minlength="6">
                             <button type="button" class="toggle-password" id="toggleSignupPassword">
                                 <i class="fas fa-eye"></i>
                             </button>
@@ -105,15 +105,15 @@
                         <label for="confirmPassword">Confirm Password</label>
                         <div class="input-wrapper">
                             <i class="fas fa-lock"></i>
-                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required minlength="6" maxlength="8">
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required minlength="6">
                         </div>
                         <span class="error-message" id="confirmPasswordError"></span>
                     </div>
 
                     <label class="checkbox">
                         <input type="checkbox" id="terms" required>
-                        <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
-                    </label>
+                        <span>I agree to the <a href="404.html">Terms of Service</a> and <a href="404.html">Privacy Policy</a></span>
+                    </label> <br>
 
                     <button type="submit" class="btn btn-primary btn-block">
                         <span>Create Account</span>
@@ -162,6 +162,60 @@
         const emailError = document.getElementById('emailError');
         const passwordError = document.getElementById('passwordError');
         const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+        // Handle form submission
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate all fields
+                const firstName = firstNameInput.value.trim();
+                const lastName = lastNameInput.value.trim();
+                const company = companyNameInput.value.trim();
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+                const terms = document.getElementById('terms').checked;
+                
+                let isValid = true;
+                
+                // Validate first name
+                if (!firstName || firstName.length < 2 || !/^[A-Za-z\s]+$/.test(firstName)) {
+                    isValid = false;
+                }
+                // Validate last name
+                if (!lastName || lastName.length < 2 || !/^[A-Za-z\s]+$/.test(lastName)) {
+                    isValid = false;
+                }
+                // Validate company
+                if (!company) {
+                    isValid = false;
+                }
+                // Validate email
+                if (!email || !email.includes('@')) {
+                    isValid = false;
+                }
+                // Validate password
+                if (!password || password.length < 6) {
+                    isValid = false;
+                }
+                // Validate password match
+                if (password !== confirmPassword) {
+                    isValid = false;
+                }
+                // Validate terms
+                if (!terms) {
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // All fields are valid, redirect to sign-in page
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Please fill all fields correctly before creating account.');
+                }
+            });
+        }
 
         // First Name validation - letters and spaces only
         if (firstNameInput) {
@@ -353,12 +407,6 @@
             
             if (passwordLength < 6) {
                 passwordError.textContent = `Password must be at least 6 characters (${passwordLength}/6)`;
-                passwordError.style.color = '#ff4757';
-                return false;
-            }
-            
-            if (passwordLength > 8) {
-                passwordError.textContent = 'Password cannot exceed 8 characters';
                 passwordError.style.color = '#ff4757';
                 return false;
             }
