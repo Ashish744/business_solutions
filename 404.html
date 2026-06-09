@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | ProBiz Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 404 Error Page -->
+    <section class="error-page">
+        <div class="error-container">
+            <div class="error-content">
+                <div class="error-code">
+                    <span class="code-404">404</span>
+                </div>
+                <h1>Page Not Found</h1>
+                <p class="error-message">Sorry, the page you're looking for doesn't exist or has been moved.</p>
+                
+                <div class="error-illustration">
+                    <div class="illustration-shape shape-1"></div>
+                    <div class="illustration-shape shape-2"></div>
+                    <div class="illustration-shape shape-3"></div>
+                    <div class="illustration-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+
+                <div class="error-actions">
+                    <button id="goBackBtn" class="btn btn-primary btn-large" type="button">
+                        <i class="fas fa-arrow-left"></i> Go Back
+                    </button>
+                </div>
+
+                <div class="error-support">
+                    <p>Need help? <a href="#" class="support-link">Contact our support team</a></p>
+                </div>
+            </div>
+
+            <!-- Animated background -->
+            <div class="error-background">
+                <div class="floating-blob blob-1"></div>
+                <div class="floating-blob blob-2"></div>
+                <div class="floating-blob blob-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('goBackBtn').addEventListener('click', function() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+    <style>
+        .error-page {
+            min-height: calc(100vh - 140px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f6fa 0%, #e9ecef 100%);
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-container {
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-content {
+            text-align: center;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .error-code {
+            margin-bottom: 20px;
+            animation: slideDown 0.6s ease;
+        }
+
+        .code-404 {
+            font-size: 120px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), #5c4ab8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            line-height: 1;
+        }
+
+        .error-page h1 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .error-message {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .error-illustration {
+            margin: 40px 0;
+            position: relative;
+            height: 200px;
+        }
+
+        .illustration-shape {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            top: 20px;
+            left: 10%;
+            background: rgba(108, 92, 231, 0.1);
+        }
+
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            top: 80px;
+            right: 15%;
+            background: rgba(0, 184, 148, 0.1);
+            animation-delay: 1s;
+        }
+
+        .shape-3 {
+            width: 60px;
+            height: 60px;
+            bottom: 10px;
+            left: 30%;
+            background: rgba(253, 203, 110, 0.1);
+            animation-delay: 2s;
+        }
+
+        .illustration-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            color: var(--primary-color);
+            opacity: 0.3;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .error-actions .btn {
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .error-suggestions {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            animation: slideInUp 0.6s ease 0.1s both;
+        }
+
+        .error-suggestions h3 {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .suggestion-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+        }
+
+        .suggestion-links a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            transition: var(--transition);
+            background: var(--light-bg);
+        }
+
+        .suggestion-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .suggestion-links i {
+            font-size: 24px;
+        }
+
+        .suggestion-links span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .error-support {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .support-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .support-link:hover {
+            text-decoration: underline;
+        }
+
+        .error-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .floating-blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+        }
+
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            right: -50px;
+            background: var(--primary-color);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 100px;
+            left: -50px;
+            background: var(--secondary-color);
+            animation: float 10s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            width: 250px;
+            height: 250px;
+            top: 50%;
+            left: 50%;
+            background: var(--accent-color);
+            animation: float 12s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+
+        @media (max-width: 768px) {
+            .code-404 {
+                font-size: 80px;
+            }
+
+            .error-page h1 {
+                font-size: 28px;
+            }
+
+            .error-message {
+                font-size: 16px;
+            }
+
+            .error-actions {
+                flex-direction: column;
+            }
+
+            .error-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .suggestion-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</body>
+</html>

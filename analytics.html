@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ProBiz Solutions</title>
+    <title>Analytics - ProBiz Solutions</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
@@ -19,11 +19,11 @@
             </button>
         </div>
         <nav class="sidebar-nav">
-            <a href="dashboard.html" class="nav-item active">
+            <a href="dashboard.html" class="nav-item">
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="analytics.html" class="nav-item">
+            <a href="analytics.html" class="nav-item active">
                 <i class="fas fa-chart-line"></i>
                 <span>Analytics</span>
             </a>
@@ -39,7 +39,7 @@
                 <i class="fas fa-file-invoice"></i>
                 <span>Reports</span>
             </a>
-            <a href="404.html" class="nav-item">
+            <a href="#" class="nav-item">
                 <i class="fas fa-cog"></i>
                 <span>Settings</span>
             </a>
@@ -61,12 +61,12 @@
             </button>
             <div class="header-search">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search anything...">
+                <input type="text" placeholder="Search analytics...">
             </div>
             <div class="header-actions">
                 <button class="notification-btn">
                     <i class="fas fa-bell"></i>
-                    <span class="notification-badge">3</span>
+                    <span class="notification-badge">2</span>
                 </button>
                 <div class="user-profile">
                     <div class="profile-avatar">JD</div>
@@ -80,65 +80,73 @@
 
         <!-- Dashboard Content -->
         <main class="dashboard-content">
-            <!-- Welcome Section -->
-            <section class="welcome-section">
-                <div class="welcome-text">
-                    <h1>Welcome back, John! 👋</h1>
-                    <p>Here's what's happening with your business today.</p>
+            <!-- Page Header -->
+            <section class="page-header">
+                <div>
+                    <h1>Analytics Dashboard</h1>
+                    <p>Track your business performance and metrics in real-time</p>
                 </div>
-                <button class="btn btn-primary">Generate Report</button>
+                <div class="header-controls">
+                    <select class="time-filter">
+                        <option>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                        <option>Last 90 Days</option>
+                        <option>This Year</option>
+                    </select>
+                    <button class="btn btn-primary btn-sm">Export Data</button>
+                </div>
             </section>
 
-            <!-- Stats Grid -->
+            <!-- Key Metrics -->
             <section class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon revenue">
-                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="stat-info">
-                        <h3>Total Revenue</h3>
-                        <p class="stat-value">$45,320</p>
+                        <h3>Page Views</h3>
+                        <p class="stat-value">125,430</p>
                         <span class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i> 12.5% from last month
+                            <i class="fas fa-arrow-up"></i> 23.5% increase
                         </span>
                     </div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-icon users">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-user-check"></i>
                     </div>
                     <div class="stat-info">
-                        <h3>Active Users</h3>
-                        <p class="stat-value">2,543</p>
+                        <h3>Conversions</h3>
+                        <p class="stat-value">3,842</p>
                         <span class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i> 8.2% from last month
+                            <i class="fas fa-arrow-up"></i> 15.2% increase
                         </span>
                     </div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-icon projects">
-                        <i class="fas fa-tasks"></i>
+                        <i class="fas fa-hourglass-end"></i>
                     </div>
                     <div class="stat-info">
-                        <h3>Active Projects</h3>
-                        <p class="stat-value">18</p>
+                        <h3>Avg. Duration</h3>
+                        <p class="stat-value">4m 32s</p>
                         <span class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i> 5 new projects
+                            <i class="fas fa-arrow-up"></i> 8.3% longer
                         </span>
                     </div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-icon tasks">
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-percentage"></i>
                     </div>
                     <div class="stat-info">
-                        <h3>Completed Tasks</h3>
-                        <p class="stat-value">156</p>
+                        <h3>Bounce Rate</h3>
+                        <p class="stat-value">32.5%</p>
                         <span class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i> 22 this week
+                            <i class="fas fa-arrow-down"></i> 5.2% decrease
                         </span>
                     </div>
                 </div>
@@ -148,98 +156,103 @@
             <section class="charts-section">
                 <div class="chart-container">
                     <div class="chart-header">
-                        <h3>Revenue Trend</h3>
+                        <h3>Traffic Over Time</h3>
                         <div class="chart-controls">
                             <button class="btn-sm active">Week</button>
                             <button class="btn-sm">Month</button>
                             <button class="btn-sm">Year</button>
                         </div>
                     </div>
-                    <canvas id="revenueChart"></canvas>
+                    <canvas id="trafficChart"></canvas>
                 </div>
 
                 <div class="chart-container">
                     <div class="chart-header">
-                        <h3>Performance by Department</h3>
+                        <h3>Traffic Sources</h3>
                     </div>
-                    <canvas id="departmentChart"></canvas>
+                    <canvas id="sourcesChart"></canvas>
                 </div>
             </section>
 
-            <!-- Recent Activity -->
-            <section class="activity-section">
-                <div class="activity-header">
-                    <h3>Recent Activity</h3>
-                    <a href="#" class="view-all">View All</a>
-                </div>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="activity-icon success">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="activity-info">
-                            <h4>Project Milestone Completed</h4>
-                            <p>E-commerce Platform Development reached 75% completion</p>
-                            <span class="activity-time">2 hours ago</span>
-                        </div>
+            <!-- Additional Analytics -->
+            <section class="analytics-grid">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Device Types</h3>
                     </div>
-
-                    <div class="activity-item">
-                        <div class="activity-icon info">
-                            <i class="fas fa-user-plus"></i>
+                    <div class="analytics-table">
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <i class="fas fa-desktop"></i> Desktop
+                            </div>
+                            <div class="table-cell">65%</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%; background: #6c5ce7;"></div>
+                            </div>
                         </div>
-                        <div class="activity-info">
-                            <h4>New Team Member Added</h4>
-                            <p>Sarah Johnson joined the Marketing team</p>
-                            <span class="activity-time">4 hours ago</span>
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <i class="fas fa-mobile-alt"></i> Mobile
+                            </div>
+                            <div class="table-cell">28%</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 28%; background: #00b894;"></div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-icon warning">
-                            <i class="fas fa-exclamation"></i>
-                        </div>
-                        <div class="activity-info">
-                            <h4>Maintenance Scheduled</h4>
-                            <p>Server maintenance scheduled for tonight at 10 PM</p>
-                            <span class="activity-time">1 day ago</span>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-icon success">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="activity-info">
-                            <h4>Report Generated</h4>
-                            <p>Monthly financial report has been generated successfully</p>
-                            <span class="activity-time">2 days ago</span>
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <i class="fas fa-tablet-alt"></i> Tablet
+                            </div>
+                            <div class="table-cell">7%</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 7%; background: #fdcb6e;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Quick Actions -->
-            <section class="quick-actions">
-                <div class="action-card">
-                    <i class="fas fa-file-alt"></i>
-                    <h4>New Document</h4>
-                    <p>Create a new project document</p>
-                </div>
-                <div class="action-card">
-                    <i class="fas fa-calendar-alt"></i>
-                    <h4>Schedule Meeting</h4>
-                    <p>Book a meeting with team members</p>
-                </div>
-                <div class="action-card">
-                    <i class="fas fa-download"></i>
-                    <h4>Export Data</h4>
-                    <p>Download your business data</p>
-                </div>
-                <div class="action-card">
-                    <i class="fas fa-share-alt"></i>
-                    <h4>Share Report</h4>
-                    <p>Share reports with stakeholders</p>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Top Pages</h3>
+                    </div>
+                    <div class="top-pages">
+                        <div class="page-row">
+                            <div class="page-info">
+                                <p class="page-name">/dashboard</p>
+                                <p class="page-path">Dashboard Home</p>
+                            </div>
+                            <div class="page-stats">
+                                <span class="views">12,450</span>
+                            </div>
+                        </div>
+                        <div class="page-row">
+                            <div class="page-info">
+                                <p class="page-name">/analytics</p>
+                                <p class="page-path">Analytics Page</p>
+                            </div>
+                            <div class="page-stats">
+                                <span class="views">8,320</span>
+                            </div>
+                        </div>
+                        <div class="page-row">
+                            <div class="page-info">
+                                <p class="page-name">/team</p>
+                                <p class="page-path">Team Management</p>
+                            </div>
+                            <div class="page-stats">
+                                <span class="views">6,150</span>
+                            </div>
+                        </div>
+                        <div class="page-row">
+                            <div class="page-info">
+                                <p class="page-name">/projects</p>
+                                <p class="page-path">Projects Overview</p>
+                            </div>
+                            <div class="page-stats">
+                                <span class="views">5,890</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -247,16 +260,16 @@
 
     <script src="script.js"></script>
     <script>
-        // Revenue Chart
-        const revenueCtx = document.getElementById('revenueChart');
-        if (revenueCtx) {
-            new Chart(revenueCtx, {
+        // Traffic Chart
+        const trafficCtx = document.getElementById('trafficChart');
+        if (trafficCtx) {
+            new Chart(trafficCtx, {
                 type: 'line',
                 data: {
                     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                     datasets: [{
-                        label: 'Revenue',
-                        data: [12000, 19000, 15000, 25000, 22000, 30000, 28000],
+                        label: 'Page Views',
+                        data: [18500, 21200, 19800, 25300, 28100, 23400, 22100],
                         borderColor: '#6c5ce7',
                         backgroundColor: 'rgba(108, 92, 231, 0.1)',
                         borderWidth: 3,
@@ -289,15 +302,15 @@
             });
         }
 
-        // Department Chart
-        const departmentCtx = document.getElementById('departmentChart');
-        if (departmentCtx) {
-            new Chart(departmentCtx, {
+        // Sources Chart
+        const sourcesCtx = document.getElementById('sourcesChart');
+        if (sourcesCtx) {
+            new Chart(sourcesCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Sales', 'Marketing', 'Development', 'Support'],
+                    labels: ['Organic', 'Direct', 'Social', 'Referral'],
                     datasets: [{
-                        data: [30, 25, 35, 10],
+                        data: [42, 25, 20, 13],
                         backgroundColor: ['#6c5ce7', '#00b894', '#fdcb6e', '#fd79a8'],
                         borderColor: '#fff',
                         borderWidth: 3
