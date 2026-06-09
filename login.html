@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ProBiz Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <!-- Left Section -->
+        <div class="auth-left">
+            <div class="auth-left-content">
+                <h1>Welcome Back</h1>
+                <p>Manage your business with ease and confidence. Sign in to your ProBiz account to continue.</p>
+                <div class="auth-benefits">
+                    <div class="benefit">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Real-time analytics and insights</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Secure data encryption</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-check-circle"></i>
+                        <span>24/7 platform availability</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-check-circle"></i>
+                        <span>24/7 dedicated support team</span>
+                    </div>
+                </div>
+                <div class="auth-illustration">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="auth-right">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="logo (1).webp" alt="ProBiz Logo" class="auth-logo">
+                    <h2>ProBiz Login</h2>
+                </div>
+
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="role">Select Role</label>
+                        <div class="select-wrapper">
+                            <select id="role" required>
+                                <option value="">Choose your role</option>
+                                <option value="admin">Administrator</option>
+                                <option value="manager">Manager</option>
+                                <option value="employee">Employee</option>
+                                <option value="client">Client</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password (6-8 characters)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter your password (min 6 characters)" required minlength="6" maxlength="8">
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" id="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span>Sign In</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>Or continue with</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-btn google-btn" onclick="loginWithGoogle()">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button class="social-btn facebook-btn" onclick="loginWithFacebook()">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+
+                <div class="auth-footer">
+                    <p>New to ProBiz? <a href="signup.html" class="auth-link">Create an account</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const form = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        // Email validation
+        if (emailInput) {
+            emailInput.addEventListener('blur', function() {
+                validateEmail(this.value);
+            });
+
+            emailInput.addEventListener('input', function() {
+                if (this.value) {
+                    validateEmail(this.value);
+                } else {
+                    emailError.textContent = '';
+                }
+            });
+        }
+
+        // Password validation
+        if (passwordInput) {
+            passwordInput.addEventListener('input', function() {
+                validatePassword(this.value);
+            });
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!email) {
+                emailError.textContent = 'Email is required';
+                emailError.style.color = '#ff4757';
+                return false;
+            }
+            
+            if (!emailRegex.test(email)) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.color = '#ff4757';
+                return false;
+            }
+            
+            emailError.textContent = '✓ Valid email';
+            emailError.style.color = '#00b894';
+            return true;
+        }
+
+        function validatePassword(password) {
+            const passwordLength = password.length;
+            
+            if (!password) {
+                passwordError.textContent = 'Password is required';
+                passwordError.style.color = '#ff4757';
+                return false;
+            }
+            
+            if (passwordLength < 6) {
+                passwordError.textContent = `Password must be at least 6 characters (${passwordLength}/6)`;
+                passwordError.style.color = '#ff4757';
+                return false;
+            }
+            
+            if (passwordLength > 8) {
+                passwordError.textContent = 'Password cannot exceed 8 characters';
+                passwordError.style.color = '#ff4757';
+                return false;
+            }
+            
+            passwordError.textContent = '✓ Valid password';
+            passwordError.style.color = '#00b894';
+            return true;
+        }
+
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const isEmailValid = validateEmail(emailInput.value);
+                const isPasswordValid = validatePassword(passwordInput.value);
+                
+                if (isEmailValid && isPasswordValid) {
+                    // Redirect to dashboard
+                    alert('Login successful! Redirecting to dashboard...');
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Please fix the errors before submitting');
+                }
+            });
+        }
+
+        if (togglePassword) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+            });
+        }
+
+        function loginWithGoogle() {
+            alert('Google login would be implemented here');
+        }
+
+        function loginWithFacebook() {
+            alert('Facebook login would be implemented here');
+        }
+    </script>
+</body>
+</html>

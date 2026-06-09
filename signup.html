@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ProBiz Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <!-- Left Section -->
+        <div class="auth-left">
+            <div class="auth-left-content">
+                <h1>Join ProBiz Today</h1>
+                <p>Start your journey to business excellence. Sign up and get instant access to our powerful platform.</p>
+                <div class="auth-benefits">
+                    <div class="benefit">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Free 14-day trial - no credit card needed</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Unlimited team members</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-check-circle"></i>
+                        <span>All features included</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Cancel anytime</span>
+                    </div>
+                </div>
+                <div class="auth-illustration">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="auth-right">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="logo (1).webp" alt="ProBiz Logo" class="auth-logo">
+                    <h2>Create Account</h2>
+                </div>
+
+                <form class="auth-form" id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="firstName" placeholder="John" required pattern="[A-Za-z\s]+" title="First name should contain only letters">
+                            </div>
+                            <span class="error-message" id="firstNameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="lastName" placeholder="Doe" required pattern="[A-Za-z\s]+" title="Last name should contain only letters">
+                            </div>
+                            <span class="error-message" id="lastNameError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-building"></i>
+                            <input type="text" id="companyName" placeholder="Your Company" required pattern="[A-Za-z0-9\s&\-']+" title="Company name should contain only letters, numbers, and basic punctuation">
+                        </div>
+                        <span class="error-message" id="companyNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="signupEmail" placeholder="your@email.com" required>
+                        </div>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupPassword">Password (6-8 characters)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="signupPassword" placeholder="Create a strong password (6-8 chars)" required minlength="6" maxlength="8">
+                            <button type="button" class="toggle-password" id="toggleSignupPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar" id="strengthBar"></div>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required minlength="6" maxlength="8">
+                        </div>
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+
+                    <label class="checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span>Create Account</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>Or sign up with</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-btn google-btn" onclick="signupWithGoogle()">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button class="social-btn facebook-btn" onclick="signupWithFacebook()">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html" class="auth-link">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const form = document.getElementById('signupForm');
+        const firstNameInput = document.getElementById('firstName');
+        const lastNameInput = document.getElementById('lastName');
+        const companyNameInput = document.getElementById('companyName');
+        const emailInput = document.getElementById('signupEmail');
+        const passwordInput = document.getElementById('signupPassword');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const togglePassword = document.getElementById('toggleSignupPassword');
+        const strengthBar = document.getElementById('strengthBar');
+
+        // Error message elements
+        const firstNameError = document.getElementById('firstNameError');
+        const lastNameError = document.getElementById('lastNameError');
+        const companyNameError = document.getElementById('companyNameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+        // First Name validation - letters and spaces only
+        if (firstNameInput) {
+            firstNameInput.addEventListener('input', function() {
+                this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+                validateFirstName(this.value);
+            });
+
+            firstNameInput.addEventListener('blur', function() {
+                validateFirstName(this.value);
+            });
+        }
+
+        // Last Name validation - letters and spaces only
+        if (lastNameInput) {
+            lastNameInput.addEventListener('input', function() {
+                this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+                validateLastName(this.value);
+            });
+
+            lastNameInput.addEventListener('blur', function() {
+                validateLastName(this.value);
+            });
+        }
+
+        // Company Name validation - letters, numbers, and basic punctuation only
+        if (companyNameInput) {
+            companyNameInput.addEventListener('input', function() {
+                this.value = this.value.replace(/[^A-Za-z0-9\s&\-']/g, '');
+                validateCompanyName(this.value);
+            });
+
+            companyNameInput.addEventListener('blur', function() {
+                validateCompanyName(this.value);
+            });
+        }
+
+        // Email validation
+        if (emailInput) {
+            emailInput.addEventListener('blur', function() {
+                validateEmail(this.value);
+            });
+
+            emailInput.addEventListener('input', function() {
+                if (this.value) {
+                    validateEmail(this.value);
+                } else {
+                    emailError.textContent = '';
+                }
+            });
+        }
+
+        // Password validation
+        if (passwordInput) {
+            passwordInput.addEventListener('input', function() {
+                validatePassword(this.value);
+            });
+
+            passwordInput.addEventListener('keydown', function(e) {
+                // Only allow letters, numbers, and special characters for password
+                const char = String.fromCharCode(e.which);
+                if (!char.match(/[a-zA-Z0-9!@#$%^&*]/)) {
+                    // Allow special keys
+                    const specialKeys = [8, 9, 13, 16, 17, 18, 19, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 46, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121];
+                    if (!specialKeys.includes(e.which)) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
+
+        // Confirm Password validation
+        if (confirmPasswordInput) {
+            confirmPasswordInput.addEventListener('input', function() {
+                validateConfirmPassword(this.value, passwordInput.value);
+            });
+
+            confirmPasswordInput.addEventListener('keydown', function(e) {
+                const char = String.fromCharCode(e.which);
+                if (!char.match(/[a-zA-Z0-9!@#$%^&*]/)) {
+                    const specialKeys = [8, 9, 13, 16, 17, 18, 19, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 46, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121];
+                    if (!specialKeys.includes(e.which)) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
+
+        function validateFirstName(value) {
+            if (!value) {
+                firstNameError.textContent = 'First name is required';
+                firstNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            if (value.length < 2) {
+                firstNameError.textContent = 'First name must be at least 2 characters';
+                firstNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            if (!/^[A-Za-z\s]+$/.test(value)) {
+                firstNameError.textContent = 'First name should contain only letters';
+                firstNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            firstNameError.textContent = '✓ Valid first name';
+            firstNameError.style.color = '#00b894';
+            return true;
+        }
+
+        function validateLastName(value) {
+            if (!value) {
+                lastNameError.textContent = 'Last name is required';
+                lastNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            if (value.length < 2) {
+                lastNameError.textContent = 'Last name must be at least 2 characters';
+                lastNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            if (!/^[A-Za-z\s]+$/.test(value)) {
+                lastNameError.textContent = 'Last name should contain only letters';
+                lastNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            lastNameError.textContent = '✓ Valid last name';
+            lastNameError.style.color = '#00b894';
+            return true;
+        }
+
+        function validateCompanyName(value) {
+            if (!value) {
+                companyNameError.textContent = 'Company name is required';
+                companyNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            if (value.length < 2) {
+                companyNameError.textContent = 'Company name must be at least 2 characters';
+                companyNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            if (!/^[A-Za-z0-9\s&\-']+$/.test(value)) {
+                companyNameError.textContent = 'Company name contains invalid characters';
+                companyNameError.style.color = '#ff4757';
+                return false;
+            }
+
+            companyNameError.textContent = '✓ Valid company name';
+            companyNameError.style.color = '#00b894';
+            return true;
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!email) {
+                emailError.textContent = 'Email is required';
+                emailError.style.color = '#ff4757';
+                return false;
+            }
+            
+            if (!emailRegex.test(email)) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.color = '#ff4757';
+                return false;
+            }
+            
+            emailError.textContent = '✓ Valid email';
+            emailError.style.color = '#00b894';
+            return true;
+        }
+
+        function validatePassword(password) {
+            const passwordLength = password.length;
+            
+            if (!password) {
+                passwordError.textContent = 'Password is required';
+                passwordError.style.color = '#ff4757';
+                return false;
+            }
+            
+            if (passwordLength < 6) {
+                passwordError.textContent = `Password must be at least 6 characters (${passwordLength}/6)`;
+                passwordError.style.color = '#ff4757';
+                return false;
+            }
+            
+            if (passwordLength > 8) {
+                passwordError.textContent = 'Password cannot exceed 8 characters';
+                passwordError.style.color = '#ff4757';
+                return false;
+            }
+            
+            passwordError.textContent = '✓ Valid password';
+            passwordError.style.color = '#00b894';
+            
+            updatePasswordStrength(password);
+            return true;
+        }
+
+        function validateConfirmPassword(confirm, original) {
+            if (!confirm) {
+                confirmPasswordError.textContent = 'Please confirm your password';
+                confirmPasswordError.style.color = '#ff4757';
+                return false;
+            }
+
+            if (confirm !== original) {
+                confirmPasswordError.textContent = 'Passwords do not match';
+                confirmPasswordError.style.color = '#ff4757';
+                return false;
+            }
+
+            confirmPasswordError.textContent = '✓ Passwords match';
+            confirmPasswordError.style.color = '#00b894';
+            return true;
+        }
+
+        function updatePasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 6) strength += 20;
+            if (password.match(/[a-z]/)) strength += 20;
+            if (password.match(/[A-Z]/)) strength += 20;
+            if (password.match(/[0-9]/)) strength += 20;
+            if (password.match(/[^a-zA-Z0-9]/)) strength += 20;
+            
+            strengthBar.style.width = strength + '%';
+            
+            if (strength < 40) {
+                strengthBar.style.backgroundColor = '#ff4757';
+            } else if (strength < 70) {
+                strengthBar.style.backgroundColor = '#ffa502';
+            } else {
+                strengthBar.style.backgroundColor = '#2ed573';
+            }
+        }
+
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const isFirstNameValid = validateFirstName(firstNameInput.value);
+                const isLastNameValid = validateLastName(lastNameInput.value);
+                const isCompanyNameValid = validateCompanyName(companyNameInput.value);
+                const isEmailValid = validateEmail(emailInput.value);
+                const isPasswordValid = validatePassword(passwordInput.value);
+                const isConfirmPasswordValid = validateConfirmPassword(confirmPasswordInput.value, passwordInput.value);
+                const termsChecked = document.getElementById('terms').checked;
+
+                if (!termsChecked) {
+                    alert('Please agree to the Terms of Service and Privacy Policy');
+                    return;
+                }
+
+                if (isFirstNameValid && isLastNameValid && isCompanyNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
+                    alert('Account created successfully! Redirecting to dashboard...');
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Please fix the errors before submitting');
+                }
+            });
+        }
+
+        if (togglePassword) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+            });
+        }
+
+        function signupWithGoogle() {
+            alert('Google signup would be implemented here');
+        }
+
+        function signupWithFacebook() {
+            alert('Facebook signup would be implemented here');
+        }
+    </script>
+</body>
+</html>
