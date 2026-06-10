@@ -441,6 +441,97 @@ document.querySelectorAll('.input-wrapper input, .input-wrapper select').forEach
 });
 
 // ============================================
+// CUSTOM DIV/SPAN DROPDOWN
+// ============================================
+
+function initializeCustomDropdown() {
+    const triggers = document.querySelectorAll('.dropdown-trigger');
+    
+    triggers.forEach(trigger => {
+        const wrapperId = trigger.id;
+        const optionsId = wrapperId + 'Options';
+        const optionsContainer = document.getElementById(optionsId);
+        const options = optionsContainer ? optionsContainer.querySelectorAll('span.option') : [];
+        
+        if (!optionsContainer || options.length === 0) return;
+        
+        // Handle dropdown toggle
+        trigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown-options.active').forEach(active => {
+                if (active !== optionsContainer) {
+                    active.classList.remove('active');
+                }
+            });
+            
+            optionsContainer.classList.toggle('active');
+        });
+        
+        // Handle option selection
+        options.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const value = this.getAttribute('value');
+                const text = this.textContent;
+                
+                // Update display text
+                const displaySpan = trigger.querySelector('.dropdown-display');
+                if (displaySpan) {
+                    displaySpan.textContent = text;
+                }
+                
+                // Update selected state
+                options.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Close dropdown
+                optionsContainer.classList.remove('active');
+                
+                // Dispatch change event
+                const event = new Event('change', { bubbles: true });
+                event.selectedValue = value;
+                trigger.dispatchEvent(event);
+            });
+        });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.select-wrapper')) {
+            document.querySelectorAll('.dropdown-options.active').forEach(active => {
+                active.classList.remove('active');
+            });
+        }
+    });
+    
+    // Handle keyboard navigation
+    triggers.forEach(trigger => {
+        trigger.addEventListener('keydown', function(e) {
+            const wrapperId = this.id;
+            const optionsId = wrapperId + 'Options';
+            const optionsContainer = document.getElementById(optionsId);
+            
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                optionsContainer.classList.toggle('active');
+            }
+            if (e.key === 'Escape') {
+                optionsContainer.classList.remove('active');
+            }
+        });
+    });
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCustomDropdown);
+} else {
+    initializeCustomDropdown();
+}
+
+// ============================================
 // LAZY LOADING IMAGES
 // ============================================
 

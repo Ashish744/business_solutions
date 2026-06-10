@@ -52,14 +52,17 @@
                     <div class="form-group">
                         <label for="role">Select Role</label>
                         <div class="select-wrapper">
-                            <select id="role" required>
-                                <option value="">Choose your role</option>
-                                <option value="admin">Administrator</option>
-                                <option value="manager">Manager</option>
-                                <option value="employee">Employee</option>
-                                <option value="client">Client</option>
-                            </select>
-                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-trigger" id="role" tabindex="0" required>
+                                <span class="dropdown-display">Choose your role</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="dropdown-options" id="roleOptions">
+                                <span value="" class="option">Choose your role</span>
+                                <span value="admin" class="option">Administrator</span>
+                                <span value="manager" class="option">Manager</span>
+                                <span value="employee" class="option">Employee</span>
+                                <span value="client" class="option">Client</span>
+                            </div>
                         </div>
                     </div>
 
